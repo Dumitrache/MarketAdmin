@@ -19,7 +19,7 @@ var LocationService = (function () {
     }
     LocationService.prototype.getLocations = function (companyId) {
         var body = new http_1.URLSearchParams();
-        body.set('action', 'GetLocatiosListByCompanyId');
+        body.set('action', 'GetLocationsListByCompanyId');
         body.set('CompanyId', companyId.toString());
         var headers = new http_1.Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
         var options = new http_1.RequestOptions({ headers: headers, method: "post" });

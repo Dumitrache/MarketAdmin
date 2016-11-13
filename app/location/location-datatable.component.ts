@@ -14,36 +14,36 @@ import { Subject } from 'rxjs/Subject';
 })
 export class LocationDatatableComponent implements OnInit {
 
-    //public locations: Observable<Location[]>;
-    public locations: Location[];
+    public locations: Observable<Location[]>;
+    // public locations: Location[];
     public selectedLocation: Location;
 
     constructor(private locationService: LocationService) { }
 
     ngOnInit() {
-        // this.locations = this.locationService.getLocations(1)
-        // .catch(error => {
-        //             // TODO: real error handling
-        //             console.log(error);
-        //             return Observable.of<Location[]>([]);
-        //         });
-        this.locations = [
-            {
-                company_id: 1,
-                LocationId: 1,
-                LocationAdress: 'Address 1',
-                LocationLat: 255,
-                LocationLng: 3546,
-                LocationName: 'Location Name 1'
-            },
-            {
-                company_id: 1,
-                LocationId: 2,
-                LocationAdress: 'Address 2',
-                LocationLat: 255,
-                LocationLng: 3546,
-                LocationName: 'Location Name 2s'
-            }];
+        this.locations = this.locationService.getLocations(1)
+        .catch(error => {
+                    // TODO: real error handling
+                    console.log(error);
+                    return Observable.of<Location[]>([]);
+                });
+        // this.locations = [
+        //     {
+        //         company_id: 1,
+        //         LocationId: 1,
+        //         LocationAdress: 'Address 1',
+        //         LocationLat: 255,
+        //         LocationLng: 3546,
+        //         LocationName: 'Location Name 1'
+        //     },
+        //     {
+        //         company_id: 1,
+        //         LocationId: 2,
+        //         LocationAdress: 'Address 2',
+        //         LocationLat: 255,
+        //         LocationLng: 3546,
+        //         LocationName: 'Location Name 2s'
+        //     }];
     }
 
     selectLocation(item: Location) {

@@ -18,7 +18,7 @@ export class ProductService {
     public getProductsByName(producName: string): Observable<Product[]> {
         let body = new URLSearchParams();
         body.set('action', 'GetProductListByName');
-        body.set('ProductName', producName);
+        body.set('ProductName',producName);
 
         //Este bun si asta
         //let bodyString = `action=GetProductListByName&input=+%22ProductName%22%3A%22${producName}%22`;
@@ -41,11 +41,9 @@ export class ProductService {
     public addProduct(product: Product): Promise<string> {
         let body = new URLSearchParams();
         body.set('action', 'AddANewProduct');
-        body.set('input', '"ProductName":"' + product.ProductName + '"');
-
-        //Este bun si asta
-        //let bodyString = `action=GetProductListByName&input=+%22ProductName%22%3A%22${producName}%22`;
-        
+        body.set('ProductName', product.ProductName);
+        body.set('ProductDescription', product.ProductDescription);
+        alert(JSON.stringify(product));
         let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
         let options = new RequestOptions({ headers: headers, method: "post" });
 

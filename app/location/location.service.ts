@@ -17,7 +17,7 @@ export class LocationService {
 
     public getLocations(companyId: number) : Observable<Location[]>{
         let body = new URLSearchParams();
-        body.set('action', 'GetLocatiosListByCompanyId');
+        body.set('action', 'GetLocationsListByCompanyId');
         body.set('CompanyId', companyId.toString());
         
         let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });

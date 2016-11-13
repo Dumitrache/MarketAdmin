@@ -37,9 +37,9 @@ var ProductService = (function () {
     ProductService.prototype.addProduct = function (product) {
         var body = new http_1.URLSearchParams();
         body.set('action', 'AddANewProduct');
-        body.set('input', '"ProductName":"' + product.ProductName + '"');
-        //Este bun si asta
-        //let bodyString = `action=GetProductListByName&input=+%22ProductName%22%3A%22${producName}%22`;
+        body.set('ProductName', product.ProductName);
+        body.set('ProductDescription', product.ProductDescription);
+        alert(JSON.stringify(product));
         var headers = new http_1.Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
         var options = new http_1.RequestOptions({ headers: headers, method: "post" });
         return this.http

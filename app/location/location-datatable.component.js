@@ -10,34 +10,35 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var location_service_1 = require('./location.service');
+var Observable_1 = require('rxjs/Observable');
 var LocationDatatableComponent = (function () {
     function LocationDatatableComponent(locationService) {
         this.locationService = locationService;
     }
     LocationDatatableComponent.prototype.ngOnInit = function () {
-        // this.locations = this.locationService.getLocations(1)
-        // .catch(error => {
-        //             // TODO: real error handling
-        //             console.log(error);
-        //             return Observable.of<Location[]>([]);
-        //         });
-        this.locations = [
-            {
-                company_id: 1,
-                LocationId: 1,
-                LocationAdress: 'Address 1',
-                LocationLat: 255,
-                LocationLng: 3546,
-                LocationName: 'Location Name 1'
-            },
-            {
-                company_id: 1,
-                LocationId: 2,
-                LocationAdress: 'Address 2',
-                LocationLat: 255,
-                LocationLng: 3546,
-                LocationName: 'Location Name 2s'
-            }];
+        this.locations = this.locationService.getLocations(1)
+            .catch(function (error) {
+            // TODO: real error handling
+            console.log(error);
+            return Observable_1.Observable.of([]);
+        });
+        // this.locations = [
+        //     {
+        //         company_id: 1,
+        //         LocationId: 1,
+        //         LocationAdress: 'Address 1',
+        //         LocationLat: 255,
+        //         LocationLng: 3546,
+        //         LocationName: 'Location Name 1'
+        //     },
+        //     {
+        //         company_id: 1,
+        //         LocationId: 2,
+        //         LocationAdress: 'Address 2',
+        //         LocationLat: 255,
+        //         LocationLng: 3546,
+        //         LocationName: 'Location Name 2s'
+        //     }];
     };
     LocationDatatableComponent.prototype.selectLocation = function (item) {
         if (item === this.selectedLocation) {
