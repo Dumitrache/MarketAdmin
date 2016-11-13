@@ -18,9 +18,12 @@ var home_component_1 = require('./home.component');
 var product_datatable_component_1 = require('./product/product-datatable.component');
 var product_component_1 = require('./product/product.component');
 var product_detail_component_1 = require('./product/product-detail.component');
+var location_component_1 = require('./location/location.component');
+var location_datatable_component_1 = require('./location/location-datatable.component');
 var angular2_notifications_1 = require('angular2-notifications');
 //Servicees
 var product_service_1 = require('./product/product.service');
+var location_service_1 = require('./location/location.service');
 //Routings
 var app_routing_module_1 = require('./app-routing.module');
 var AppModule = (function () {
@@ -42,9 +45,11 @@ var AppModule = (function () {
                 product_datatable_component_1.ProductDatatableComponent,
                 home_component_1.HomeComponent,
                 product_component_1.ProductComponent,
-                product_detail_component_1.ProducDetailComponent
+                product_detail_component_1.ProducDetailComponent,
+                location_datatable_component_1.LocationDatatableComponent,
+                location_component_1.LocationComponent
             ],
-            providers: [product_service_1.ProductService],
+            providers: [product_service_1.ProductService, location_service_1.LocationService],
             bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])

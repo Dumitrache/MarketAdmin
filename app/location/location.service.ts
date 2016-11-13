@@ -15,9 +15,10 @@ export class LocationService {
         this.staticUrl = 'http://proiectsoftwareinechipa.16mb.com/api/index.php';
     }
 
-    public getLocations() : Observable<Location[]>{
+    public getLocations(companyId: number) : Observable<Location[]>{
         let body = new URLSearchParams();
-        body.set('action', 'GetLocations');
+        body.set('action', 'GetLocatiosListByCompanyId');
+        body.set('CompanyId', companyId.toString());
         
         let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
         let options = new RequestOptions({ headers: headers, method: "post" });
@@ -31,7 +32,10 @@ export class LocationService {
     public addLocation(location: Location): Promise<string> {
         let body = new URLSearchParams();
         body.set('action', 'AddANewLocation');
-        //body.set('input', '"Location":"' + location + '"');
+        body.set('LocationName', location.LocationName);
+        body.set('LocationAdress',location.LocationAdress);
+        body.set('LocationLat', location.LocationLat.toString());
+        body.set('LocationLng', location.LocationLng.toString());
         
         let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
         let options = new RequestOptions({ headers: headers, method: "post" });

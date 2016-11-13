@@ -11,12 +11,15 @@ import { HomeComponent } from './home.component';
 import { ProductDatatableComponent } from './product/product-datatable.component';
 import { ProductComponent } from './product/product.component';
 import { ProducDetailComponent } from  './product/product-detail.component';
+import { LocationComponent } from './location/location.component';
+import { LocationDatatableComponent } from  './location/location-datatable.component';
 
 import { PushNotificationsModule, SimpleNotificationsModule } from 'angular2-notifications';
 
 
 //Servicees
 import { ProductService } from './product/product.service';
+import { LocationService } from './location/location.service';
 
 //Routings
 import { AppRoutingModule } from './app-routing.module';
@@ -36,9 +39,11 @@ import { AppRoutingModule } from './app-routing.module';
     ProductDatatableComponent,
     HomeComponent,
     ProductComponent,
-    ProducDetailComponent
+    ProducDetailComponent,
+    LocationDatatableComponent,
+    LocationComponent
   ],
-  providers: [ProductService],
+  providers: [ProductService, LocationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -18,7 +18,7 @@ export class ProductService {
     public getProductsByName(producName: string): Observable<Product[]> {
         let body = new URLSearchParams();
         body.set('action', 'GetProductListByName');
-        body.set('input', '"ProductName":"'+producName+'"');
+        body.set('ProductName', producName);
 
         //Este bun si asta
         //let bodyString = `action=GetProductListByName&input=+%22ProductName%22%3A%22${producName}%22`;

@@ -11,35 +11,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 require('rxjs/add/operator/toPromise');
-var ProductService = (function () {
-    function ProductService(http) {
+var LocationService = (function () {
+    function LocationService(http) {
         this.http = http;
         this.headers = new http_1.Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
         this.staticUrl = 'http://proiectsoftwareinechipa.16mb.com/api/index.php';
     }
-    ProductService.prototype.getProductsByName = function (producName) {
+    LocationService.prototype.getLocations = function (companyId) {
         var body = new http_1.URLSearchParams();
-        body.set('action', 'GetProductListByName');
-        body.set('ProductName', producName);
-        //Este bun si asta
-        //let bodyString = `action=GetProductListByName&input=+%22ProductName%22%3A%22${producName}%22`;
+        body.set('action', 'GetLocatiosListByCompanyId');
+        body.set('CompanyId', companyId.toString());
         var headers = new http_1.Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
         var options = new http_1.RequestOptions({ headers: headers, method: "post" });
-        return this.http
-            .post(this.staticUrl, 
-        //bodyString,
-        body, options)
+        return this.http.post(this.staticUrl, body, options)
             .map(function (r) {
-            console.log(r.json());
             return r.json();
         });
     };
-    ProductService.prototype.addProduct = function (product) {
+    LocationService.prototype.addLocation = function (location) {
         var body = new http_1.URLSearchParams();
-        body.set('action', 'AddANewProduct');
-        body.set('input', '"ProductName":"' + product.ProductName + '"');
-        //Este bun si asta
-        //let bodyString = `action=GetProductListByName&input=+%22ProductName%22%3A%22${producName}%22`;
+        body.set('action', 'AddANewLocation');
+        body.set('LocationName', location.LocationName);
+        body.set('LocationAdress', location.LocationAdress);
+        body.set('LocationLat', location.LocationLat.toString());
+        body.set('LocationLng', location.LocationLng.toString());
         var headers = new http_1.Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
         var options = new http_1.RequestOptions({ headers: headers, method: "post" });
         return this.http
@@ -51,11 +46,11 @@ var ProductService = (function () {
             return r.text();
         });
     };
-    ProductService = __decorate([
+    LocationService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])
-    ], ProductService);
-    return ProductService;
+    ], LocationService);
+    return LocationService;
 }());
-exports.ProductService = ProductService;
-//# sourceMappingURL=product.service.js.map
+exports.LocationService = LocationService;
+//# sourceMappingURL=location.service.js.map

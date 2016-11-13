@@ -13,11 +13,15 @@ var router_1 = require('@angular/router');
 var home_component_1 = require('./home.component');
 var product_datatable_component_1 = require('./product/product-datatable.component');
 var product_component_1 = require('./product/product.component');
+var location_datatable_component_1 = require('./location/location-datatable.component');
+var location_component_1 = require('./location/location.component');
 var routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: 'home', component: home_component_1.HomeComponent },
     { path: 'products', component: product_datatable_component_1.ProductDatatableComponent },
-    { path: 'product', component: product_component_1.ProductComponent }
+    { path: 'product', component: product_component_1.ProductComponent },
+    { path: 'location', component: location_component_1.LocationComponent },
+    { path: 'locations', component: location_datatable_component_1.LocationDatatableComponent }
 ];
 var AppRoutingModule = (function () {
     function AppRoutingModule() {
