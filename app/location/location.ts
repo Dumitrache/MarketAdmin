@@ -1,0 +1,6 @@
+/**
+ * Location
+ */
+export class Location {
+    
+}
