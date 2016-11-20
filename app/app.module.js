@@ -15,12 +15,13 @@ var forms_1 = require('@angular/forms');
 var http_1 = require('@angular/http');
 var app_component_1 = require('./app.component');
 var home_component_1 = require('./home.component');
-var product_datatable_component_1 = require('./product/product-datatable.component');
-var product_component_1 = require('./product/product.component');
-var product_detail_component_1 = require('./product/product-detail.component');
+// import { ProductDatatableComponent } from './product/product-datatable.component';
+// import { ProductComponent } from './product/product.component';
+// import { ProducDetailComponent } from  './product/product-detail.component';
 var location_component_1 = require('./location/location.component');
 var location_datatable_component_1 = require('./location/location-datatable.component');
 var angular2_notifications_1 = require('angular2-notifications');
+var product_module_1 = require('./product/product.module');
 //Servicees
 var product_service_1 = require('./product/product.service');
 var location_service_1 = require('./location/location.service');
@@ -38,14 +39,14 @@ var AppModule = (function () {
                 http_1.HttpModule,
                 http_1.JsonpModule,
                 angular2_notifications_1.PushNotificationsModule,
-                angular2_notifications_1.SimpleNotificationsModule
+                angular2_notifications_1.SimpleNotificationsModule, product_module_1.ProductModule
             ],
             declarations: [
                 app_component_1.AppComponent,
-                product_datatable_component_1.ProductDatatableComponent,
+                //ProductDatatableComponent,
                 home_component_1.HomeComponent,
-                product_component_1.ProductComponent,
-                product_detail_component_1.ProducDetailComponent,
+                //ProductComponent,
+                //ProducDetailComponent,
                 location_datatable_component_1.LocationDatatableComponent,
                 location_component_1.LocationComponent
             ],

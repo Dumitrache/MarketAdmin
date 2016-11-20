@@ -8,13 +8,15 @@ import { HttpModule, JsonpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home.component';
-import { ProductDatatableComponent } from './product/product-datatable.component';
-import { ProductComponent } from './product/product.component';
-import { ProducDetailComponent } from  './product/product-detail.component';
+// import { ProductDatatableComponent } from './product/product-datatable.component';
+// import { ProductComponent } from './product/product.component';
+// import { ProducDetailComponent } from  './product/product-detail.component';
 import { LocationComponent } from './location/location.component';
 import { LocationDatatableComponent } from  './location/location-datatable.component';
 
 import { PushNotificationsModule, SimpleNotificationsModule } from 'angular2-notifications';
+
+import { ProductModule } from './product/product.module';
 
 
 //Servicees
@@ -32,14 +34,14 @@ import { AppRoutingModule } from './app-routing.module';
     HttpModule,
     JsonpModule,
     PushNotificationsModule,
-    SimpleNotificationsModule
+    SimpleNotificationsModule, ProductModule
   ],
   declarations: [
     AppComponent,
-    ProductDatatableComponent,
+    //ProductDatatableComponent,
     HomeComponent,
-    ProductComponent,
-    ProducDetailComponent,
+    //ProductComponent,
+    //ProducDetailComponent,
     LocationDatatableComponent,
     LocationComponent
   ],
