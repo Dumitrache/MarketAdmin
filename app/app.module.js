@@ -15,16 +15,9 @@ var forms_1 = require('@angular/forms');
 var http_1 = require('@angular/http');
 var app_component_1 = require('./app.component');
 var home_component_1 = require('./home.component');
-// import { ProductDatatableComponent } from './product/product-datatable.component';
-// import { ProductComponent } from './product/product.component';
-// import { ProducDetailComponent } from  './product/product-detail.component';
-var location_component_1 = require('./location/location.component');
-var location_datatable_component_1 = require('./location/location-datatable.component');
-var angular2_notifications_1 = require('angular2-notifications');
+//import { PushNotificationsModule, SimpleNotificationsModule } from 'angular2-notifications';
 var product_module_1 = require('./product/product.module');
-//Servicees
-var product_service_1 = require('./product/product.service');
-var location_service_1 = require('./location/location.service');
+var location_module_1 = require('./location/location.module');
 //Routings
 var app_routing_module_1 = require('./app-routing.module');
 var AppModule = (function () {
@@ -38,19 +31,16 @@ var AppModule = (function () {
                 app_routing_module_1.AppRoutingModule,
                 http_1.HttpModule,
                 http_1.JsonpModule,
-                angular2_notifications_1.PushNotificationsModule,
-                angular2_notifications_1.SimpleNotificationsModule, product_module_1.ProductModule
+                //PushNotificationsModule,
+                //SimpleNotificationsModule, 
+                product_module_1.ProductModule,
+                location_module_1.LocationModule
             ],
             declarations: [
                 app_component_1.AppComponent,
-                //ProductDatatableComponent,
                 home_component_1.HomeComponent,
-                //ProductComponent,
-                //ProducDetailComponent,
-                location_datatable_component_1.LocationDatatableComponent,
-                location_component_1.LocationComponent
             ],
-            providers: [product_service_1.ProductService, location_service_1.LocationService],
+            providers: [],
             bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])

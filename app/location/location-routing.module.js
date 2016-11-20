@@ -10,24 +10,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
-var home_component_1 = require('./home.component');
+var location_component_1 = require('./location.component');
+var location_datatable_component_1 = require('./location-datatable.component');
 var routes = [
-    { path: '', redirectTo: '/home', pathMatch: 'full' },
-    { path: 'home', component: home_component_1.HomeComponent },
-    { path: 'locations', loadChildren: 'app/location/location.module#LocationModule' },
-    { path: 'products', loadChildren: 'app/product/product.module#ProductModule' }
+    { path: '', component: location_datatable_component_1.LocationDatatableComponent },
+    { path: 'location', component: location_component_1.LocationComponent }
 ];
-var AppRoutingModule = (function () {
-    function AppRoutingModule() {
+var LocationRoutingModule = (function () {
+    function LocationRoutingModule() {
     }
-    AppRoutingModule = __decorate([
+    LocationRoutingModule = __decorate([
         core_1.NgModule({
-            imports: [router_1.RouterModule.forRoot(routes)],
-            exports: [router_1.RouterModule]
+            imports: [router_1.RouterModule.forChild(routes)],
+            exports: [router_1.RouterModule],
         }), 
         __metadata('design:paramtypes', [])
-    ], AppRoutingModule);
-    return AppRoutingModule;
+    ], LocationRoutingModule);
+    return LocationRoutingModule;
 }());
-exports.AppRoutingModule = AppRoutingModule;
-//# sourceMappingURL=app-routing.module.js.map
+exports.LocationRoutingModule = LocationRoutingModule;
+//# sourceMappingURL=location-routing.module.js.map
