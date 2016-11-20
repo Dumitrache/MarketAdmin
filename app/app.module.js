@@ -14,8 +14,7 @@ var platform_browser_1 = require('@angular/platform-browser');
 var forms_1 = require('@angular/forms');
 var http_1 = require('@angular/http');
 var app_component_1 = require('./app.component');
-var home_component_1 = require('./home.component');
-//import { PushNotificationsModule, SimpleNotificationsModule } from 'angular2-notifications';
+var home_component_1 = require('./home/home.component');
 var product_module_1 = require('./product/product.module');
 var location_module_1 = require('./location/location.module');
 //Routings
@@ -31,14 +30,12 @@ var AppModule = (function () {
                 app_routing_module_1.AppRoutingModule,
                 http_1.HttpModule,
                 http_1.JsonpModule,
-                //PushNotificationsModule,
-                //SimpleNotificationsModule, 
                 product_module_1.ProductModule,
                 location_module_1.LocationModule
             ],
             declarations: [
                 app_component_1.AppComponent,
-                home_component_1.HomeComponent,
+                home_component_1.HomeComponent
             ],
             providers: [],
             bootstrap: [app_component_1.AppComponent]

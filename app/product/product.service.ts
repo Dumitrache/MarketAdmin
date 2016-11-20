@@ -3,7 +3,6 @@ import { Headers, Http, Response, RequestOptions, URLSearchParams } from '@angul
 import 'rxjs/add/operator/toPromise';
 import { Observable } from 'rxjs';
 import { Product } from './product';
-import { BaseResponse } from '../base-response';
 
 @Injectable()
 export class ProductService {
