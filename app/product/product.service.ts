@@ -3,6 +3,8 @@ import { Headers, Http, Response, RequestOptions, URLSearchParams } from '@angul
 import 'rxjs/add/operator/toPromise';
 import { Observable } from 'rxjs';
 import { Product } from './product';
+import { PriceStock } from './price-stock';
+
 
 @Injectable()
 export class ProductService {
@@ -42,7 +44,30 @@ export class ProductService {
         body.set('action', 'AddANewProduct');
         body.set('ProductName', product.ProductName);
         body.set('ProductDescription', product.ProductDescription);
-        alert(JSON.stringify(product));
+        //alert(JSON.stringify(product));
+        let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+        let options = new RequestOptions({ headers: headers, method: "post" });
+
+        return this.http
+            .post(this.staticUrl,
+            //bodyString,
+            body,
+            options
+            ).toPromise()
+            .then((r: Response) => {
+                console.log(r.text());
+                return r.text()
+            });
+    }
+
+    public addPriceStock(price: PriceStock): Promise<string> {
+        let body = new URLSearchParams();
+        body.set('action', 'AddANewPriceStock');
+        body.set('location_id', price.LocationID.toString());
+        body.set('product_id', price.ProductID.toString());
+        body.set('Price', price.Price.toString());
+        body.set('Stock', price.Stock.toString());
+        //alert(JSON.stringify(product));
         let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
         let options = new RequestOptions({ headers: headers, method: "post" });
 

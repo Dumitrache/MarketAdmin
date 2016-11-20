@@ -19,7 +19,7 @@ import { PushNotificationsModule, SimpleNotificationsModule } from 'angular2-not
         PushNotificationsModule,
         SimpleNotificationsModule
     ],
-    exports: [],
+    exports: [LocationDatatableComponent],
     declarations: [LocationComponent, LocationDatatableComponent],
     providers: [LocationService],
 })

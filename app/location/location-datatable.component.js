@@ -14,6 +14,8 @@ var Observable_1 = require('rxjs/Observable');
 var LocationDatatableComponent = (function () {
     function LocationDatatableComponent(locationService) {
         this.locationService = locationService;
+        this.isExtern = false;
+        this.notify = new core_1.EventEmitter();
     }
     LocationDatatableComponent.prototype.ngOnInit = function () {
         this.locations = this.locationService.getLocations(1)
@@ -43,11 +45,21 @@ var LocationDatatableComponent = (function () {
     LocationDatatableComponent.prototype.selectLocation = function (item) {
         if (item === this.selectedLocation) {
             this.selectedLocation = undefined;
+            this.notify.emit(undefined);
         }
         else {
             this.selectedLocation = item;
+            this.notify.emit(item.LocationId);
         }
     };
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Boolean)
+    ], LocationDatatableComponent.prototype, "isExtern", void 0);
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', core_1.EventEmitter)
+    ], LocationDatatableComponent.prototype, "notify", void 0);
     LocationDatatableComponent = __decorate([
         core_1.Component({
             moduleId: module.id,

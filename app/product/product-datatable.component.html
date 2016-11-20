@@ -37,6 +37,8 @@
 </div>
 
 <ma-product-detail [product]="selectedProduct" *ngIf="isDetailsShown === true"></ma-product-detail>
+<br>
+<br>
 <div class="row" *ngIf="isDetailsShown === true">
     <div class="col-xs-3">
         <button class="btn btn-primary" (click)="toggleDetails()" role="button">Back</button>

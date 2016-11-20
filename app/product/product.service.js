@@ -39,7 +39,26 @@ var ProductService = (function () {
         body.set('action', 'AddANewProduct');
         body.set('ProductName', product.ProductName);
         body.set('ProductDescription', product.ProductDescription);
-        alert(JSON.stringify(product));
+        //alert(JSON.stringify(product));
+        var headers = new http_1.Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+        var options = new http_1.RequestOptions({ headers: headers, method: "post" });
+        return this.http
+            .post(this.staticUrl, 
+        //bodyString,
+        body, options).toPromise()
+            .then(function (r) {
+            console.log(r.text());
+            return r.text();
+        });
+    };
+    ProductService.prototype.addPriceStock = function (price) {
+        var body = new http_1.URLSearchParams();
+        body.set('action', 'AddANewPriceStock');
+        body.set('location_id', price.LocationID.toString());
+        body.set('product_id', price.ProductID.toString());
+        body.set('Price', price.Price.toString());
+        body.set('Stock', price.Stock.toString());
+        //alert(JSON.stringify(product));
         var headers = new http_1.Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
         var options = new http_1.RequestOptions({ headers: headers, method: "post" });
         return this.http

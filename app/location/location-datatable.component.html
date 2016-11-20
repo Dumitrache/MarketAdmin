@@ -23,8 +23,32 @@
     </tbody>
 </table>
 
-<div class="row">
+
+<div class="row" *ngIf="isExtern == false">
     <div class="col-xs-3">
         <button class="btn btn-primary" [routerLink]="['/location']" role="button">Add location</button>
+    </div>
+</div>
+<div class="row" *ngIf="isExtern == true && selectedLocation">
+
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <table class="table">
+            <tr>
+                <td>
+                    Name
+                </td>
+                <td>
+                    {{selectedLocation.LocationName}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Description
+                </td>
+                <td>
+                    {{selectedLocation.LocationAdress}}
+                </td>
+            </tr>
+        </table>
     </div>
 </div>

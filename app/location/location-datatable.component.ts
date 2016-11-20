@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Location } from './location';
 import { LocationService } from './location.service';
 import { Observable } from 'rxjs/Observable';
@@ -17,6 +17,12 @@ export class LocationDatatableComponent implements OnInit {
     public locations: Observable<Location[]>;
     // public locations: Location[];
     public selectedLocation: Location;
+
+    @Input()
+    public isExtern: boolean = false;
+
+    @Output() 
+    notify: EventEmitter<number> = new EventEmitter<number>();
 
     constructor(private locationService: LocationService) { }
 
@@ -49,9 +55,11 @@ export class LocationDatatableComponent implements OnInit {
     selectLocation(item: Location) {
         if (item === this.selectedLocation) {
             this.selectedLocation = undefined;
+            this.notify.emit(undefined);
         }
         else {
             this.selectedLocation = item;
+            this.notify.emit(item.LocationId);
         }
     }
 }

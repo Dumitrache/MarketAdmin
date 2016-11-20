@@ -10,10 +10,49 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var product_1 = require('./product');
+var price_stock_1 = require('./price-stock');
+var product_service_1 = require('./product.service');
+var angular2_notifications_1 = require('angular2-notifications');
 var ProducDetailComponent = (function () {
-    function ProducDetailComponent() {
+    function ProducDetailComponent(_service, productService) {
+        this._service = _service;
+        this.productService = productService;
+        this.isSelected = false;
+        this.priceStock = new price_stock_1.PriceStock();
+        this.options = {
+            position: ["top", "right"],
+            timeOut: 3000,
+            pauseOnHover: true,
+            lastOnBottom: false,
+            animate: 'scale'
+        };
     }
-    ProducDetailComponent.prototype.ngOnInit = function () { };
+    ProducDetailComponent.prototype.ngOnInit = function () {
+    };
+    ProducDetailComponent.prototype.onNotify = function (id) {
+        this.locationID = id;
+        // alert(id);
+    };
+    ProducDetailComponent.prototype.getSelectedLocation = function () {
+        this.isSelected = this.locationID !== undefined ? true : false;
+    };
+    ProducDetailComponent.prototype.add = function () {
+        var _this = this;
+        if (this.priceStock && this.locationID && this.product) {
+            this.priceStock.LocationID = this.locationID;
+            this.priceStock.ProductID = this.product.ProductId;
+            this.productService.addPriceStock(this.priceStock)
+                .then(function (message) {
+                //alert();
+                _this._service.success("Save", message);
+                //this.goBack();
+            })
+                .catch(function (error) { return console.log(error); });
+        }
+        else {
+            alert('Something is wrong.');
+        }
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', product_1.Product)
@@ -24,7 +63,7 @@ var ProducDetailComponent = (function () {
             selector: 'ma-product-detail',
             templateUrl: 'product-detail.component.html'
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [angular2_notifications_1.NotificationsService, product_service_1.ProductService])
     ], ProducDetailComponent);
     return ProducDetailComponent;
 }());

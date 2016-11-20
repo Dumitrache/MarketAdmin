@@ -28,7 +28,7 @@ var LocationModule = (function () {
                 angular2_notifications_1.PushNotificationsModule,
                 angular2_notifications_1.SimpleNotificationsModule
             ],
-            exports: [],
+            exports: [location_datatable_component_1.LocationDatatableComponent],
             declarations: [location_component_1.LocationComponent, location_datatable_component_1.LocationDatatableComponent],
             providers: [location_service_1.LocationService],
         }), 

@@ -17,13 +17,20 @@ var product_detail_component_1 = require('./product-detail.component');
 var product_service_1 = require('./product.service');
 var product_routing_module_1 = require('./product-routing.module');
 var angular2_notifications_1 = require('angular2-notifications');
+var location_module_1 = require('../location/location.module');
 var ProductModule = (function () {
     function ProductModule() {
     }
     ProductModule = __decorate([
         core_1.NgModule({
-            imports: [common_1.CommonModule, forms_1.FormsModule, product_routing_module_1.ProductRoutingModule, angular2_notifications_1.PushNotificationsModule,
-                angular2_notifications_1.SimpleNotificationsModule],
+            imports: [
+                common_1.CommonModule,
+                forms_1.FormsModule,
+                product_routing_module_1.ProductRoutingModule,
+                angular2_notifications_1.PushNotificationsModule,
+                angular2_notifications_1.SimpleNotificationsModule,
+                location_module_1.LocationModule
+            ],
             exports: [],
             declarations: [product_component_1.ProductComponent, product_datatable_component_1.ProductDatatableComponent, product_detail_component_1.ProducDetailComponent],
             providers: [product_service_1.ProductService],
