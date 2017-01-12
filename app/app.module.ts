@@ -12,6 +12,8 @@ import { AppComponent } from './app.component';
 import { ProductModule } from './product/product.module';
 import { LocationModule } from './location/location.module';
 
+import { LoginModule } from './login/login.module';
+
 //Routings
 import { AppRoutingModule } from './app-routing.module';
 
@@ -23,7 +25,8 @@ import { AppRoutingModule } from './app-routing.module';
     HttpModule,
     JsonpModule,
     ProductModule,
-    LocationModule
+    LocationModule,
+    LoginModule
   ],
   declarations: [
     AppComponent,

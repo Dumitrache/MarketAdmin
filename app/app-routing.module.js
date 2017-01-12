@@ -11,11 +11,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var home_component_1 = require('./home/home.component');
+var login_component_1 = require('./login/login.component');
 var routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: 'home', component: home_component_1.HomeComponent },
+    { path: 'login', component: login_component_1.LoginComponent },
     { path: 'locations', loadChildren: 'app/location/location.module#LocationModule' },
-    { path: 'products', loadChildren: 'app/product/product.module#ProductModule' }
+    { path: 'products', loadChildren: 'app/product/product.module#ProductModule' },
+    { path: 'login', loadChildren: 'app/auth/login/login.module#LoginModule' },
 ];
 var AppRoutingModule = (function () {
     function AppRoutingModule() {

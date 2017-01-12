@@ -17,6 +17,7 @@ var app_component_1 = require('./app.component');
 var home_component_1 = require('./home/home.component');
 var product_module_1 = require('./product/product.module');
 var location_module_1 = require('./location/location.module');
+var login_module_1 = require('./login/login.module');
 //Routings
 var app_routing_module_1 = require('./app-routing.module');
 var AppModule = (function () {
@@ -31,7 +32,8 @@ var AppModule = (function () {
                 http_1.HttpModule,
                 http_1.JsonpModule,
                 product_module_1.ProductModule,
-                location_module_1.LocationModule
+                location_module_1.LocationModule,
+                login_module_1.LoginModule
             ],
             declarations: [
                 app_component_1.AppComponent,
