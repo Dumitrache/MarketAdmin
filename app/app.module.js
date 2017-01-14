@@ -20,6 +20,9 @@ var location_module_1 = require('./location/location.module');
 var login_module_1 = require('./login/login.module');
 //Routings
 var app_routing_module_1 = require('./app-routing.module');
+var header_module_1 = require('./header/header.module');
+var auth_service_1 = require('./auth/auth.service');
+var auth_guard_service_1 = require('./auth/auth-guard.service');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -33,13 +36,14 @@ var AppModule = (function () {
                 http_1.JsonpModule,
                 product_module_1.ProductModule,
                 location_module_1.LocationModule,
-                login_module_1.LoginModule
+                login_module_1.LoginModule,
+                header_module_1.HeaderModule
             ],
             declarations: [
                 app_component_1.AppComponent,
                 home_component_1.HomeComponent
             ],
-            providers: [],
+            providers: [auth_service_1.AuthService, auth_guard_service_1.AuthGuard],
             bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])

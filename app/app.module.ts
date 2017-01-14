@@ -17,6 +17,12 @@ import { LoginModule } from './login/login.module';
 //Routings
 import { AppRoutingModule } from './app-routing.module';
 
+import { HeaderModule } from './header/header.module';
+import { HeaderComponent } from './header/header.component';
+import { AuthService } from './auth/auth.service';
+import { AuthGuard } from './auth/auth-guard.service';
+
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -26,13 +32,14 @@ import { AppRoutingModule } from './app-routing.module';
     JsonpModule,
     ProductModule,
     LocationModule,
-    LoginModule
+    LoginModule,
+    HeaderModule
   ],
   declarations: [
     AppComponent,
     HomeComponent
   ],
-  providers: [],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

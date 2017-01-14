@@ -12,13 +12,14 @@ var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var home_component_1 = require('./home/home.component');
 var login_component_1 = require('./login/login.component');
+var auth_guard_service_1 = require('./auth/auth-guard.service');
 var routes = [
-    { path: '', redirectTo: '/home', pathMatch: 'full' },
-    { path: 'home', component: home_component_1.HomeComponent },
+    { path: '', redirectTo: '/home', pathMatch: 'full', canActivate: [auth_guard_service_1.AuthGuard] },
+    { path: 'home', component: home_component_1.HomeComponent, canActivate: [auth_guard_service_1.AuthGuard] },
     { path: 'login', component: login_component_1.LoginComponent },
-    { path: 'locations', loadChildren: 'app/location/location.module#LocationModule' },
-    { path: 'products', loadChildren: 'app/product/product.module#ProductModule' },
-    { path: 'login', loadChildren: 'app/auth/login/login.module#LoginModule' },
+    { path: 'locations', loadChildren: 'app/location/location.module#LocationModule', canActivate: [auth_guard_service_1.AuthGuard] },
+    { path: 'products', loadChildren: 'app/product/product.module#ProductModule', canActivate: [auth_guard_service_1.AuthGuard] },
+    { path: 'login', loadChildren: 'app/auth/login/login.module#LoginModule', canActivate: [auth_guard_service_1.AuthGuard] },
 ];
 var AppRoutingModule = (function () {
     function AppRoutingModule() {
@@ -26,7 +27,8 @@ var AppRoutingModule = (function () {
     AppRoutingModule = __decorate([
         core_1.NgModule({
             imports: [router_1.RouterModule.forRoot(routes)],
-            exports: [router_1.RouterModule]
+            exports: [router_1.RouterModule],
+            providers: [auth_guard_service_1.AuthGuard]
         }), 
         __metadata('design:paramtypes', [])
     ], AppRoutingModule);

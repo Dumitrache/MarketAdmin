@@ -8,28 +8,37 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+// Angular Imports
 var core_1 = require('@angular/core');
+// This Module's Components
+var header_component_1 = require('./header.component');
 var common_1 = require('@angular/common');
-var login_component_1 = require('./login.component');
 var forms_1 = require('@angular/forms');
-var angular2_notifications_1 = require('angular2-notifications');
-var LoginModule = (function () {
-    function LoginModule() {
+var platform_browser_1 = require('@angular/platform-browser');
+var router_1 = require('@angular/router');
+var auth_service_1 = require('../auth/auth.service');
+var HeaderModule = (function () {
+    function HeaderModule() {
     }
-    LoginModule = __decorate([
+    HeaderModule = __decorate([
         core_1.NgModule({
             imports: [
+                platform_browser_1.BrowserModule,
                 common_1.CommonModule,
                 forms_1.FormsModule,
-                angular2_notifications_1.PushNotificationsModule,
-                angular2_notifications_1.SimpleNotificationsModule,
+                router_1.RouterModule
             ],
-            declarations: [login_component_1.LoginComponent],
-            exports: [login_component_1.LoginComponent]
+            declarations: [
+                header_component_1.HeaderComponent,
+            ],
+            exports: [
+                header_component_1.HeaderComponent
+            ],
+            providers: [auth_service_1.AuthService]
         }), 
         __metadata('design:paramtypes', [])
-    ], LoginModule);
-    return LoginModule;
+    ], HeaderModule);
+    return HeaderModule;
 }());
-exports.LoginModule = LoginModule;
-//# sourceMappingURL=login.module.js.map
+exports.HeaderModule = HeaderModule;
+//# sourceMappingURL=header.module.js.map

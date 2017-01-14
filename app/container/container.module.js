@@ -8,28 +8,26 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+// Angular Imports
 var core_1 = require('@angular/core');
-var common_1 = require('@angular/common');
-var login_component_1 = require('./login.component');
-var forms_1 = require('@angular/forms');
-var angular2_notifications_1 = require('angular2-notifications');
-var LoginModule = (function () {
-    function LoginModule() {
+// This Module's Components
+var container_component_1 = require('./container.component');
+var ContainerModule = (function () {
+    function ContainerModule() {
     }
-    LoginModule = __decorate([
+    ContainerModule = __decorate([
         core_1.NgModule({
-            imports: [
-                common_1.CommonModule,
-                forms_1.FormsModule,
-                angular2_notifications_1.PushNotificationsModule,
-                angular2_notifications_1.SimpleNotificationsModule,
+            imports: [],
+            declarations: [
+                container_component_1.ContainerComponent,
             ],
-            declarations: [login_component_1.LoginComponent],
-            exports: [login_component_1.LoginComponent]
+            exports: [
+                container_component_1.ContainerComponent,
+            ]
         }), 
         __metadata('design:paramtypes', [])
-    ], LoginModule);
-    return LoginModule;
+    ], ContainerModule);
+    return ContainerModule;
 }());
-exports.LoginModule = LoginModule;
-//# sourceMappingURL=login.module.js.map
+exports.ContainerModule = ContainerModule;
+//# sourceMappingURL=container.module.js.map
