@@ -15,7 +15,7 @@ var ImportFileService = (function () {
     function ImportFileService(http, authService) {
         this.http = http;
         this.authService = authService;
-        this.headers = new http_1.Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+        this.headers = new http_1.Headers({ 'Content-Type': 'multipart/form-data' });
         this.staticUrl = 'http://proiectsoftwareinechipa.16mb.com/api/index.php';
     }
     ImportFileService.prototype.insertFile = function (file) {

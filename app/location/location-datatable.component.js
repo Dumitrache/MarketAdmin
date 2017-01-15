@@ -11,14 +11,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var location_service_1 = require('./location.service');
 var Observable_1 = require('rxjs/Observable');
+var auth_service_1 = require('../auth/auth.service');
 var LocationDatatableComponent = (function () {
-    function LocationDatatableComponent(locationService) {
+    function LocationDatatableComponent(locationService, authService) {
         this.locationService = locationService;
+        this.authService = authService;
         this.isExtern = false;
         this.notify = new core_1.EventEmitter();
     }
     LocationDatatableComponent.prototype.ngOnInit = function () {
-        this.locations = this.locationService.getLocations(1)
+        this.locations = this.locationService.getLocations(this.authService.User.CompanyId)
             .catch(function (error) {
             // TODO: real error handling
             console.log(error);
@@ -67,7 +69,7 @@ var LocationDatatableComponent = (function () {
             templateUrl: 'location-datatable.component.html',
             styles: ["tbody tr.selected {\n        background-color: #C0C0C0;\n    }"]
         }), 
-        __metadata('design:paramtypes', [location_service_1.LocationService])
+        __metadata('design:paramtypes', [location_service_1.LocationService, auth_service_1.AuthService])
     ], LocationDatatableComponent);
     return LocationDatatableComponent;
 }());

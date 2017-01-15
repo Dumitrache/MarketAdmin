@@ -7,8 +7,8 @@ import { RegisterComponent } from './register/register.component';
 import { ImportFileComponent } from './import-file/import-file.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full', canActivate: [AuthGuard] },
-  { path: 'home',  component: HomeComponent, canActivate: [AuthGuard] },
+  { path: '', redirectTo: '/products', pathMatch: 'full', canActivate: [AuthGuard] },
+  { path: 'home', redirectTo: '/products', pathMatch: 'full', canActivate: [AuthGuard] },
   { path: 'login',  component: LoginComponent },
   { path: 'locations', loadChildren: 'app/location/location.module#LocationModule', canActivate: [AuthGuard] },
   { path: 'register', component: RegisterComponent, canActivate: [AuthGuard] },

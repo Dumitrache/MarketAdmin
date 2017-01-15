@@ -8,7 +8,7 @@ import { AuthService } from '../auth/auth.service';
 export class ImportFileService {
 
 private staticUrl: string;
-    private headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    private headers = new Headers({ 'Content-Type': 'multipart/form-data' });
 
     constructor(private http: Http, private authService: AuthService) {
         this.staticUrl = 'http://proiectsoftwareinechipa.16mb.com/api/index.php';
@@ -17,7 +17,7 @@ private staticUrl: string;
     public insertFile(file: any): Observable<Error> {
         let body = new URLSearchParams();
         body.set('action', 'AddAutomaticPriceStock');
-        body.set('JsonFile',file);
+        body.set('JsonFile', file);
         body.set('UserId',this.authService.User.UserId.toString());
 
         //Este bun si asta

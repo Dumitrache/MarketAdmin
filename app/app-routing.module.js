@@ -10,14 +10,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
-var home_component_1 = require('./home/home.component');
 var login_component_1 = require('./login/login.component');
 var auth_guard_service_1 = require('./auth/auth-guard.service');
 var register_component_1 = require('./register/register.component');
 var import_file_component_1 = require('./import-file/import-file.component');
 var routes = [
-    { path: '', redirectTo: '/home', pathMatch: 'full', canActivate: [auth_guard_service_1.AuthGuard] },
-    { path: 'home', component: home_component_1.HomeComponent, canActivate: [auth_guard_service_1.AuthGuard] },
+    { path: '', redirectTo: '/products', pathMatch: 'full', canActivate: [auth_guard_service_1.AuthGuard] },
+    { path: 'home', redirectTo: '/products', pathMatch: 'full', canActivate: [auth_guard_service_1.AuthGuard] },
     { path: 'login', component: login_component_1.LoginComponent },
     { path: 'locations', loadChildren: 'app/location/location.module#LocationModule', canActivate: [auth_guard_service_1.AuthGuard] },
     { path: 'register', component: register_component_1.RegisterComponent, canActivate: [auth_guard_service_1.AuthGuard] },

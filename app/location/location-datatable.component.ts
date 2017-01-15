@@ -3,6 +3,7 @@ import { Location } from './location';
 import { LocationService } from './location.service';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
     moduleId: module.id,
@@ -24,10 +25,11 @@ export class LocationDatatableComponent implements OnInit {
     @Output() 
     notify: EventEmitter<number> = new EventEmitter<number>();
 
-    constructor(private locationService: LocationService) { }
+    constructor(private locationService: LocationService,
+         private authService: AuthService) { }
 
     ngOnInit() {
-        this.locations = this.locationService.getLocations(1)
+        this.locations = this.locationService.getLocations(this.authService.User.CompanyId)
         .catch(error => {
                     // TODO: real error handling
                     console.log(error);
