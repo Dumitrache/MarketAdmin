@@ -106,16 +106,22 @@ export class AuthService {
 let body = new URLSearchParams(),
       headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' }),
       options = new RequestOptions({ headers: headers, method: "post" });
+
+      
     body.set('action', 'AddANewUser');
     body.set('Name', user.Name);
     body.set('Username', user.Username);
     body.set('Password', user.Password);
     body.set('LocationId', user.LocationId.toString());
     body.set('CompanyId', user.CompanyId.toString());
-    body.set('IsManager', user.IsManager.toString());
+    body.set('IsManager', (user.IsManager).toString());
 
     return this.http.post(this.staticUrl, body, options).toPromise()
       .then((r: Response) => {
+        var result = r.text();
+        if(result == "")
+          return undefined;
+
         return r.json() as Error;        
       });
   }

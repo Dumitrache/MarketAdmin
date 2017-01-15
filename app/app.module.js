@@ -24,6 +24,7 @@ var header_module_1 = require('./header/header.module');
 var auth_service_1 = require('./auth/auth.service');
 var auth_guard_service_1 = require('./auth/auth-guard.service');
 var register_module_1 = require('./register/register.module');
+var import_file_module_1 = require('./import-file/import-file.module');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -39,6 +40,7 @@ var AppModule = (function () {
                 location_module_1.LocationModule,
                 login_module_1.LoginModule,
                 header_module_1.HeaderModule,
+                import_file_module_1.ImportFileModule,
                 register_module_1.RegisterModule
             ],
             declarations: [

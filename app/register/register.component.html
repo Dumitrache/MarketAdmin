@@ -6,9 +6,9 @@
       <input type="text" [(ngModel)]="user.Name" placeholder="Name"/>
       <input type="text" [(ngModel)]="user.Username" placeholder="Username"/>
       <input type="text" [(ngModel)]="user.Password" placeholder="Password"/>
-      <input type="text" [(ngModel)]="user.LocationId" placeholder="LocationId"/>
-      <input type="text" [(ngModel)]="user.CompanyId" placeholder="CompanyIdame"/>
-      <input type="text" [(ngModel)]="user.IsManager" placeholder="IsManager"/>
+      <select id=locationID>
+        <option *ngFor="let item of locations" value="{{item.LocationId}}">{{item.LocationName}}</option>
+      </select>
       <button (click)="register()">Create</button>
     </div>
   </div>

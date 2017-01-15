@@ -22,6 +22,7 @@ import { HeaderComponent } from './header/header.component';
 import { AuthService } from './auth/auth.service';
 import { AuthGuard } from './auth/auth-guard.service';
 import { RegisterModule } from './register/register.module';
+import { ImportFileModule } from './import-file/import-file.module';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { RegisterModule } from './register/register.module';
     LocationModule,
     LoginModule,
     HeaderModule,
+    ImportFileModule,
     RegisterModule
   ],
   declarations: [

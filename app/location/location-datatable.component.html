@@ -14,7 +14,7 @@
             <th>Description</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody style="height: 300px; overflow-y: auto;">
         <tr *ngFor="let item of locations | async" (click)="selectLocation(item)" [class.selected]="item === selectedLocation">
             <td>{{item.LocationId}}</td>
             <td>{{item.LocationName}}</td>
