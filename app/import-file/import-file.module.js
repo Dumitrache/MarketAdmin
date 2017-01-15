@@ -16,6 +16,7 @@ var import_file_service_1 = require('./import-file.service');
 var angular2_notifications_1 = require('angular2-notifications');
 var common_1 = require('@angular/common');
 var forms_1 = require('@angular/forms');
+var auth_service_1 = require('../auth/auth.service');
 var ImportFileModule = (function () {
     function ImportFileModule() {
     }
@@ -32,7 +33,7 @@ var ImportFileModule = (function () {
             exports: [
                 import_file_component_1.ImportFileComponent,
             ],
-            providers: [import_file_service_1.ImportFileService]
+            providers: [import_file_service_1.ImportFileService, auth_service_1.AuthService]
         }), 
         __metadata('design:paramtypes', [])
     ], ImportFileModule);

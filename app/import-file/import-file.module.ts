@@ -7,6 +7,7 @@ import { ImportFileService } from './import-file.service';
 import { SimpleNotificationsModule } from 'angular2-notifications';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from '../auth/auth.service';
 
 @NgModule({
     imports: [       
@@ -20,7 +21,7 @@ import { FormsModule } from '@angular/forms';
     exports: [
         ImportFileComponent,
     ],
-    providers:[ImportFileService]
+    providers:[ImportFileService, AuthService]
 })
 export class ImportFileModule {
 

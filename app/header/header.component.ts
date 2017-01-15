@@ -3,6 +3,7 @@ import { AuthService } from '../auth/auth.service';
 import { Location } from '@angular/common';
 import { Router, Resolve } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
+import { UserType } from '../auth/user-output';
 @Component({
     moduleId: module.id,
     selector: 'ma-header',
@@ -27,7 +28,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
             this.visible = item;
             if (this.visible == true) {
                 this.Username = this.authService.Username;
-                this.IsManager = this.authService.User.IsManager;
+                this.IsManager = this.authService.User.IsManager == UserType.IsManager ? true : false;
             }
         });
 

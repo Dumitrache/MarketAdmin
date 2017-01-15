@@ -34,8 +34,14 @@ var LocationComponent = (function () {
         //Add component
         this.locationService.addLocation(this.locationModel)
             .then(function (message) {
-            _this.service.success("Save", message);
-            //this.goBack();
+            if (message === undefined)
+                _this.service.success("Location", 'Location was saved!');
+            else {
+                for (var _i = 0, _a = message.Errors; _i < _a.length; _i++) {
+                    var item = _a[_i];
+                    _this.service.error('Location', item);
+                }
+            }
         })
             .catch(function (error) { return console.log(error); });
     };

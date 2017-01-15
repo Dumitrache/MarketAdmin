@@ -34,7 +34,15 @@ var ProductComponent = (function () {
         //Add component
         this.productService.addProduct(this.product)
             .then(function (message) {
-            _this._service.success("Save", message);
+            if (message === undefined) {
+                _this._service.success("Item", 'Saved!');
+            }
+            else {
+                for (var _i = 0, _a = message.Errors; _i < _a.length; _i++) {
+                    var item = _a[_i];
+                    _this._service.error('Item', item);
+                }
+            }
             //this.goBack();
         })
             .catch(function (error) { return console.log(error); });

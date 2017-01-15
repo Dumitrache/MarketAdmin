@@ -25,7 +25,8 @@
       // other libraries
       'rxjs':                      'npm:rxjs',
       'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',
-      'angular2-notifications': 'node_modules/angular2-notifications'
+      'angular2-notifications': 'node_modules/angular2-notifications',
+      'linq-es2015':   'node_modules/linq-es2015'
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
@@ -33,6 +34,10 @@
         main: './main.js',
         defaultExtension: 'js'
       },
+      'linq-es2015':   {
+         main: 'dist/linq.js', 
+         defaultExtension: 'js' 
+        },
       rxjs: {
         defaultExtension: 'js'
       },

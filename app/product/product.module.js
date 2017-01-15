@@ -18,6 +18,7 @@ var product_service_1 = require('./product.service');
 var product_routing_module_1 = require('./product-routing.module');
 var angular2_notifications_1 = require('angular2-notifications');
 var location_module_1 = require('../location/location.module');
+var auth_service_1 = require('../auth/auth.service');
 var ProductModule = (function () {
     function ProductModule() {
     }
@@ -33,7 +34,7 @@ var ProductModule = (function () {
             ],
             exports: [],
             declarations: [product_component_1.ProductComponent, product_datatable_component_1.ProductDatatableComponent, product_detail_component_1.ProducDetailComponent],
-            providers: [product_service_1.ProductService],
+            providers: [product_service_1.ProductService, auth_service_1.AuthService],
         }), 
         __metadata('design:paramtypes', [])
     ], ProductModule);

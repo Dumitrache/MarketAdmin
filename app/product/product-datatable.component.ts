@@ -36,14 +36,20 @@ export class ProductDatatableComponent implements OnInit {
         }
     }
 
-    toggleDetails() {
-        if (this.selectedProduct !== undefined && this.isDetailsShown === false) {
-            this.isDetailsShown = true;
-        }
-        else{
-            this.isDetailsShown = false;
-            this.selectedProduct = undefined;
-        }
+    toggleDetails(item: Product) {
+        this.selectedProduct = item;
+        this.isDetailsShown = true;
+        // if (this.selectedProduct !== undefined && this.isDetailsShown === false) {
+        //     this.isDetailsShown = true;
+        // }
+        // else {
+        //     this.isDetailsShown = false;
+        //     this.selectedProduct = undefined;
+        // }
+    }
+
+    onVisible(visible: boolean){
+        this.isDetailsShown = !visible;
     }
 
     /**

@@ -39,7 +39,7 @@ var RegisterComponent = (function () {
         var element = document.getElementById('locationID');
         this.user.LocationId = parseInt(element.options[element.selectedIndex].value);
         this.user.CompanyId = this.authService.User.CompanyId;
-        this.user.IsManager = false;
+        this.user.IsManager = user_output_1.UserType.IsNotManager;
         this.authService.register(this.user)
             .then(function (result) {
             if (result !== undefined) {

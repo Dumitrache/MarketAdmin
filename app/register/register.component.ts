@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NotificationsService } from 'angular2-notifications';
-import { User } from '../auth/user-output';
+import { User, UserType } from '../auth/user-output';
 import { AuthService } from '../auth/auth.service';
 import { LocationService } from '../location/location.service';
 import { Location } from '../location/location';
@@ -44,7 +44,7 @@ export class RegisterComponent implements OnInit {
         let element = document.getElementById('locationID') as HTMLSelectElement;
         this.user.LocationId = parseInt(element.options[element.selectedIndex].value);
         this.user.CompanyId = this.authService.User.CompanyId;
-        this.user.IsManager = false;
+        this.user.IsManager = UserType.IsNotManager;
         
         this.authService.register(this.user)
             .then(result => {

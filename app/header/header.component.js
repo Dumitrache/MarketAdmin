@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var auth_service_1 = require('../auth/auth.service');
 var router_1 = require('@angular/router');
+var user_output_1 = require('../auth/user-output');
 var HeaderComponent = (function () {
     function HeaderComponent(authService, router) {
         this.authService = authService;
@@ -24,7 +25,7 @@ var HeaderComponent = (function () {
             _this.visible = item;
             if (_this.visible == true) {
                 _this.Username = _this.authService.Username;
-                _this.IsManager = _this.authService.User.IsManager;
+                _this.IsManager = _this.authService.User.IsManager == user_output_1.UserType.IsManager ? true : false;
             }
         });
         if (this.visible == true) {

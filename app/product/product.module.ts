@@ -13,6 +13,8 @@ import { ProductRoutingModule } from './product-routing.module';
 import { PushNotificationsModule, SimpleNotificationsModule } from 'angular2-notifications';
 
 import { LocationModule } from '../location/location.module';
+import { AuthService } from '../auth/auth.service';
+import { LocationService } from '../location/location.service';
 
 @NgModule({
     imports: [
@@ -25,6 +27,6 @@ import { LocationModule } from '../location/location.module';
     ],
     exports: [],
     declarations: [ProductComponent, ProductDatatableComponent, ProducDetailComponent],
-    providers: [ProductService],
+    providers: [ProductService, AuthService],
 })
 export class ProductModule { }

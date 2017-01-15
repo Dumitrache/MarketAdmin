@@ -108,7 +108,8 @@ var AuthService = (function () {
         body.set('Password', user.Password);
         body.set('LocationId', user.LocationId.toString());
         body.set('CompanyId', user.CompanyId.toString());
-        body.set('IsManager', (user.IsManager).toString());
+        body.set('IsManager', user.IsManager.toString());
+        body.set('UserId', this.User.UserId.toString());
         return this.http.post(this.staticUrl, body, options).toPromise()
             .then(function (r) {
             var result = r.text();

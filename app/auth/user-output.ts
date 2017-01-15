@@ -7,6 +7,11 @@ export class User {
     LocationId: number;
     UserId: number;
     CompanyId: number;
-    IsManager: boolean;
+    IsManager: UserType;
     Password: string;
+}
+
+export enum UserType{
+    IsNotManager = 0, 
+    IsManager
 }

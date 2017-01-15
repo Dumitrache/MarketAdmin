@@ -37,7 +37,13 @@ export class ProductComponent implements OnInit {
         //Add component
         this.productService.addProduct(this.product)
             .then(message => {
-                this._service.success("Save", message);
+                if (message === undefined) {
+                    this._service.success("Item", 'Saved!');                    
+                } else {
+                    for(let item of message.Errors){
+                        this._service.error('Item', item);
+                    }
+                }
                 //this.goBack();
             })
             .catch(error => console.log(error));

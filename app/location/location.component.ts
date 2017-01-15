@@ -35,8 +35,13 @@ export class LocationComponent implements OnInit {
         //Add component
         this.locationService.addLocation(this.locationModel)
             .then(message => {
-                this.service.success("Save", message);
-                //this.goBack();
+                if(message === undefined)
+                    this.service.success("Location", 'Location was saved!');
+                else{
+                    for(let item of message.Errors){
+                        this.service.error('Location', item);
+                    }
+                }
             })
             .catch(error => console.log(error));
     }

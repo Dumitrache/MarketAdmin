@@ -12,10 +12,10 @@
         <li routerLinkActive="active">
             <a [routerLink]="['/import']">Import</a>
         </li>
-        <li routerLinkActive="active" *ngIf="!IsManager">
+        <li routerLinkActive="active" *ngIf="IsManager">
             <a [routerLink]="['/locations']">Locations</a>
         </li>
-        <li routerLinkActive="active" *ngIf="!IsManager">
+        <li routerLinkActive="active" *ngIf="IsManager">
             <a [routerLink]="['/register']">Register</a>
         </li>
     </ul>

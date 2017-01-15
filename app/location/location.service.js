@@ -11,9 +11,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 require('rxjs/add/operator/toPromise');
+var auth_service_1 = require('../auth/auth.service');
 var LocationService = (function () {
-    function LocationService(http) {
+    function LocationService(http, authService) {
         this.http = http;
+        this.authService = authService;
         this.headers = new http_1.Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
         this.staticUrl = 'http://proiectsoftwareinechipa.16mb.com/api/index.php';
     }
@@ -35,6 +37,7 @@ var LocationService = (function () {
         body.set('LocationAdress', location.LocationAdress);
         body.set('LocationLat', location.LocationLat.toString());
         body.set('LocationLng', location.LocationLng.toString());
+        body.set('UserId', this.authService.User.UserId.toString());
         var headers = new http_1.Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
         var options = new http_1.RequestOptions({ headers: headers, method: "post" });
         return this.http
@@ -42,13 +45,14 @@ var LocationService = (function () {
         //bodyString,
         body, options).toPromise()
             .then(function (r) {
-            console.log(r.text());
-            return r.text();
+            if (r.text() == "")
+                return undefined;
+            return r.json();
         });
     };
     LocationService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
+        __metadata('design:paramtypes', [http_1.Http, auth_service_1.AuthService])
     ], LocationService);
     return LocationService;
 }());

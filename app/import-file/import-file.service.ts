@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, URLSearchParams, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Error } from '../common/error';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable()
 export class ImportFileService {
@@ -9,7 +10,7 @@ export class ImportFileService {
 private staticUrl: string;
     private headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
 
-    constructor(private http: Http) {
+    constructor(private http: Http, private authService: AuthService) {
         this.staticUrl = 'http://proiectsoftwareinechipa.16mb.com/api/index.php';
     }
 
@@ -17,6 +18,7 @@ private staticUrl: string;
         let body = new URLSearchParams();
         body.set('action', 'AddAutomaticPriceStock');
         body.set('JsonFile',file);
+        body.set('UserId',this.authService.User.UserId.toString());
 
         //Este bun si asta
         //let bodyString = `action=GetProductListByName&input=+%22ProductName%22%3A%22${producName}%22`;

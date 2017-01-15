@@ -10,9 +10,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
+var auth_service_1 = require('../auth/auth.service');
 var ImportFileService = (function () {
-    function ImportFileService(http) {
+    function ImportFileService(http, authService) {
         this.http = http;
+        this.authService = authService;
         this.headers = new http_1.Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
         this.staticUrl = 'http://proiectsoftwareinechipa.16mb.com/api/index.php';
     }
@@ -20,6 +22,7 @@ var ImportFileService = (function () {
         var body = new http_1.URLSearchParams();
         body.set('action', 'AddAutomaticPriceStock');
         body.set('JsonFile', file);
+        body.set('UserId', this.authService.User.UserId.toString());
         //Este bun si asta
         //let bodyString = `action=GetProductListByName&input=+%22ProductName%22%3A%22${producName}%22`;
         var headers = new http_1.Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
@@ -36,7 +39,7 @@ var ImportFileService = (function () {
     };
     ImportFileService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
+        __metadata('design:paramtypes', [http_1.Http, auth_service_1.AuthService])
     ], ImportFileService);
     return ImportFileService;
 }());

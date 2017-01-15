@@ -27,14 +27,19 @@ var ProductDatatableComponent = (function () {
             this.selectedProduct = item;
         }
     };
-    ProductDatatableComponent.prototype.toggleDetails = function () {
-        if (this.selectedProduct !== undefined && this.isDetailsShown === false) {
-            this.isDetailsShown = true;
-        }
-        else {
-            this.isDetailsShown = false;
-            this.selectedProduct = undefined;
-        }
+    ProductDatatableComponent.prototype.toggleDetails = function (item) {
+        this.selectedProduct = item;
+        this.isDetailsShown = true;
+        // if (this.selectedProduct !== undefined && this.isDetailsShown === false) {
+        //     this.isDetailsShown = true;
+        // }
+        // else {
+        //     this.isDetailsShown = false;
+        //     this.selectedProduct = undefined;
+        // }
+    };
+    ProductDatatableComponent.prototype.onVisible = function (visible) {
+        this.isDetailsShown = !visible;
     };
     /**
      * search

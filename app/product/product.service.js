@@ -11,9 +11,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 require('rxjs/add/operator/toPromise');
+var auth_service_1 = require('../auth/auth.service');
 var ProductService = (function () {
-    function ProductService(http) {
+    function ProductService(http, authService) {
         this.http = http;
+        this.authService = authService;
         this.headers = new http_1.Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
         this.staticUrl = 'http://proiectsoftwareinechipa.16mb.com/api/index.php';
     }
@@ -39,6 +41,7 @@ var ProductService = (function () {
         body.set('action', 'AddANewProduct');
         body.set('ProductName', product.ProductName);
         body.set('ProductDescription', product.ProductDescription);
+        body.set('UserId', this.authService.User.UserId.toString());
         //alert(JSON.stringify(product));
         var headers = new http_1.Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
         var options = new http_1.RequestOptions({ headers: headers, method: "post" });
@@ -47,8 +50,9 @@ var ProductService = (function () {
         //bodyString,
         body, options).toPromise()
             .then(function (r) {
-            console.log(r.text());
-            return r.text();
+            if (r.text() == "")
+                return undefined;
+            return r.json();
         });
     };
     ProductService.prototype.addPriceStock = function (price) {
@@ -58,6 +62,7 @@ var ProductService = (function () {
         body.set('product_id', price.ProductID.toString());
         body.set('Price', price.Price.toString());
         body.set('Stock', price.Stock.toString());
+        body.set('UserId', this.authService.User.UserId.toString());
         //alert(JSON.stringify(product));
         var headers = new http_1.Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
         var options = new http_1.RequestOptions({ headers: headers, method: "post" });
@@ -66,13 +71,14 @@ var ProductService = (function () {
         //bodyString,
         body, options).toPromise()
             .then(function (r) {
-            console.log(r.text());
-            return r.text();
+            if (r.text() == "")
+                return undefined;
+            return r.json();
         });
     };
     ProductService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
+        __metadata('design:paramtypes', [http_1.Http, auth_service_1.AuthService])
     ], ProductService);
     return ProductService;
 }());
