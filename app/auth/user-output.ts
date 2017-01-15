@@ -8,4 +8,5 @@ export class User {
     UserId: number;
     CompanyId: number;
     IsManager: boolean;
+    Password: string;
 }

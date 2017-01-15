@@ -9,16 +9,19 @@
         <li routerLinkActive="active">
             <a [routerLink]="['/products']">Products</a>
         </li>
-        <li routerLinkActive="active">
+        <li routerLinkActive="active" *ngIf="!IsManager">
             <a [routerLink]="['/locations']">Locations</a>
+        </li>
+        <li routerLinkActive="active" *ngIf="!IsManager">
+            <a [routerLink]="['/register']">Register</a>
         </li>
     </ul>
     <ul class="nav navbar-nav navbar-right" *ngIf="Username">
-        <li class="active">
-            <a><i class="fa fa-user"></i>Hi {{Username}}</a>
+        <li>
+            <a>Hi {{Username}}</a>
         </li>
-        <li class="active">
-            <a (click)="logout()">Log off </a>
+        <li>
+            <a class="logout" (click)="logout()">Log off </a>
         </li>
       </ul>
 </nav>

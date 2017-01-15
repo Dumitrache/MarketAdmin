@@ -23,6 +23,7 @@ var app_routing_module_1 = require('./app-routing.module');
 var header_module_1 = require('./header/header.module');
 var auth_service_1 = require('./auth/auth.service');
 var auth_guard_service_1 = require('./auth/auth-guard.service');
+var register_module_1 = require('./register/register.module');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -37,7 +38,8 @@ var AppModule = (function () {
                 product_module_1.ProductModule,
                 location_module_1.LocationModule,
                 login_module_1.LoginModule,
-                header_module_1.HeaderModule
+                header_module_1.HeaderModule,
+                register_module_1.RegisterModule
             ],
             declarations: [
                 app_component_1.AppComponent,

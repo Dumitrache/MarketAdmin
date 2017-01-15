@@ -10,7 +10,7 @@ import { Error } from '../common/error';
 import { NotificationsService } from 'angular2-notifications';
 import { Subject } from 'rxjs/Subject';
 
-class UserOutput{
+class UserOutput {
   public User: User[];
 }
 
@@ -21,23 +21,27 @@ export class AuthService {
   private staticUrl: string;
 
   public emitter: Subject<boolean> = new Subject<boolean>();
-  
+
   getChangeEmitter() {
     return this.emitter;
   }
 
-  public get isLoggedIn(): boolean{
-      return window.localStorage[USER_SESSION] !== undefined ? true : false;
-  } 
+  public get isLoggedIn(): boolean {
+    return window.localStorage[USER_SESSION] !== undefined ? true : false;
+  }
+
+  public get User(): User {
+    return window.localStorage[USER_SESSION] !== undefined ? <User>JSON.parse(window.localStorage[USER_SESSION]) : undefined;
+  }
 
   get Username(): string {
-        if(window.localStorage[USER_SESSION] !== undefined){
-          return (<User>JSON.parse(window.localStorage[USER_SESSION])).Name;
-        }
-        return undefined;
+    if (window.localStorage[USER_SESSION] !== undefined) {
+      return (<User>JSON.parse(window.localStorage[USER_SESSION])).Name;
     }
+    return undefined;
+  }
 
-  constructor(private http: Http, private service: NotificationsService){
+  constructor(private http: Http, private service: NotificationsService) {
     this.staticUrl = 'http://proiectsoftwareinechipa.16mb.com/api/index.php';
   }
 
@@ -46,55 +50,73 @@ export class AuthService {
 
   login(username: string, password: string): Promise<User | Error> {
     let body = new URLSearchParams(),
-        headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' }),
-        options = new RequestOptions({ headers: headers, method: "post" });
-        body.set('action', 'LogIn');
-        body.set('Username', username);
-        body.set('Password', password);
+      headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' }),
+      options = new RequestOptions({ headers: headers, method: "post" });
+    body.set('action', 'LogIn');
+    body.set('Username', username);
+    body.set('Password', password);
 
-        return this.http.post(this.staticUrl, body, options).toPromise()
-        .then((r: Response) => {
-            let response = r.json() as any,
-                returnValue: Error| User;
-            if (response !== undefined) {
-              if (response.User !== undefined) {
-                window.localStorage[USER_SESSION] = JSON.stringify(response.User[0]);
-                returnValue = <User>response.User[0];
-                this.emitter.next(true);
-              }
-              else{
-                returnValue = <Error>response;
-                this.emitter.next(false);
-              }
-            }
-            else{
-              this.emitter.next(false);
-              returnValue = undefined;
-            }
-            return returnValue;
-        });
+    return this.http.post(this.staticUrl, body, options).toPromise()
+      .then((r: Response) => {
+        let response = r.json() as any,
+          returnValue: Error | User;
+        if (response !== undefined) {
+          if (response.User !== undefined) {
+            window.localStorage[USER_SESSION] = JSON.stringify(response.User[0]);
+            returnValue = <User>response.User[0];
+            this.emitter.next(true);
+          }
+          else {
+            returnValue = <Error>response;
+            this.emitter.next(false);
+          }
+        }
+        else {
+          this.emitter.next(false);
+          returnValue = undefined;
+        }
+        return returnValue;
+      });
   }
 
   logout(): Promise<boolean> {
     let body = new URLSearchParams(),
-        headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' }),
-        options = new RequestOptions({ headers: headers, method: "post" });
-        body.set('action', 'LogOut');
+      headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' }),
+      options = new RequestOptions({ headers: headers, method: "post" });
+    body.set('action', 'LogOut');
 
-        return this.http.post(this.staticUrl, body, options).toPromise()
-        .then((r: Response) => {
-                console.log(r.text());
-                window.localStorage.removeItem(USER_SESSION);
-                this.emitter.next(false);
-                return true;
-                
-            })
-        .catch(error => {
-          console.log(error)
-          window.localStorage.removeItem(USER_SESSION);
-          this.redirectUrl = "";
-          this.emitter.next(false);
-        });
-        
+    return this.http.post(this.staticUrl, body, options).toPromise()
+      .then((r: Response) => {
+        console.log(r.text());
+        window.localStorage.removeItem(USER_SESSION);
+        this.emitter.next(false);
+        return true;
+
+      })
+      .catch(error => {
+        console.log(error)
+        window.localStorage.removeItem(USER_SESSION);
+        this.redirectUrl = "";
+        this.emitter.next(false);
+      });
+
+  }
+
+  register(user:User): Promise<Error>{
+let body = new URLSearchParams(),
+      headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' }),
+      options = new RequestOptions({ headers: headers, method: "post" });
+    body.set('action', 'AddANewUser');
+    body.set('Name', user.Name);
+    body.set('Username', user.Username);
+    body.set('Password', user.Password);
+    body.set('LocationId', user.LocationId.toString());
+    body.set('CompanyId', user.CompanyId.toString());
+    body.set('IsManager', user.IsManager.toString());
+
+    return this.http.post(this.staticUrl, body, options).toPromise()
+      .then((r: Response) => {
+        return r.json() as Error;        
+      });
   }
 }

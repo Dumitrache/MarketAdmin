@@ -24,6 +24,7 @@ var HeaderComponent = (function () {
             _this.visible = item;
             if (_this.visible == true) {
                 _this.Username = _this.authService.Username;
+                _this.IsManager = _this.authService.User.IsManager;
             }
         });
         if (this.visible == true) {

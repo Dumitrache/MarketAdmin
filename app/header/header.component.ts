@@ -14,6 +14,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     public visible: boolean;
     public Username: string;
     private listener: Subscription;
+    public IsManager: boolean;
 
     constructor(private authService: AuthService, private router: Router) {
         this.visible = this.authService.isLoggedIn;
@@ -26,6 +27,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
             this.visible = item;
             if (this.visible == true) {
                 this.Username = this.authService.Username;
+                this.IsManager = this.authService.User.IsManager;
             }
         });
 

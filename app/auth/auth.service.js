@@ -38,6 +38,13 @@ var AuthService = (function () {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(AuthService.prototype, "User", {
+        get: function () {
+            return window.localStorage[USER_SESSION] !== undefined ? JSON.parse(window.localStorage[USER_SESSION]) : undefined;
+        },
+        enumerable: true,
+        configurable: true
+    });
     Object.defineProperty(AuthService.prototype, "Username", {
         get: function () {
             if (window.localStorage[USER_SESSION] !== undefined) {
@@ -91,6 +98,20 @@ var AuthService = (function () {
             window.localStorage.removeItem(USER_SESSION);
             _this.redirectUrl = "";
             _this.emitter.next(false);
+        });
+    };
+    AuthService.prototype.register = function (user) {
+        var body = new http_1.URLSearchParams(), headers = new http_1.Headers({ 'Content-Type': 'application/x-www-form-urlencoded' }), options = new http_1.RequestOptions({ headers: headers, method: "post" });
+        body.set('action', 'AddANewUser');
+        body.set('Name', user.Name);
+        body.set('Username', user.Username);
+        body.set('Password', user.Password);
+        body.set('LocationId', user.LocationId.toString());
+        body.set('CompanyId', user.CompanyId.toString());
+        body.set('IsManager', user.IsManager.toString());
+        return this.http.post(this.staticUrl, body, options).toPromise()
+            .then(function (r) {
+            return r.json();
         });
     };
     AuthService = __decorate([

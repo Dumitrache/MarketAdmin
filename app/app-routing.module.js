@@ -13,11 +13,13 @@ var router_1 = require('@angular/router');
 var home_component_1 = require('./home/home.component');
 var login_component_1 = require('./login/login.component');
 var auth_guard_service_1 = require('./auth/auth-guard.service');
+var register_component_1 = require('./register/register.component');
 var routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full', canActivate: [auth_guard_service_1.AuthGuard] },
     { path: 'home', component: home_component_1.HomeComponent, canActivate: [auth_guard_service_1.AuthGuard] },
     { path: 'login', component: login_component_1.LoginComponent },
     { path: 'locations', loadChildren: 'app/location/location.module#LocationModule', canActivate: [auth_guard_service_1.AuthGuard] },
+    { path: 'register', component: register_component_1.RegisterComponent, canActivate: [auth_guard_service_1.AuthGuard] },
     { path: 'products', loadChildren: 'app/product/product.module#ProductModule', canActivate: [auth_guard_service_1.AuthGuard] },
     { path: 'login', loadChildren: 'app/auth/login/login.module#LoginModule', canActivate: [auth_guard_service_1.AuthGuard] },
 ];

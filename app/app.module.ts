@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
- import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './home/home.component';
 
 import { ProductModule } from './product/product.module';
 import { LocationModule } from './location/location.module';
@@ -21,6 +21,7 @@ import { HeaderModule } from './header/header.module';
 import { HeaderComponent } from './header/header.component';
 import { AuthService } from './auth/auth.service';
 import { AuthGuard } from './auth/auth-guard.service';
+import { RegisterModule } from './register/register.module';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { AuthGuard } from './auth/auth-guard.service';
     ProductModule,
     LocationModule,
     LoginModule,
-    HeaderModule
+    HeaderModule,
+    RegisterModule
   ],
   declarations: [
     AppComponent,
